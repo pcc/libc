@@ -1142,6 +1142,15 @@ s! {
         pub get_args: __u16,
         pub name: [c_char; ::IFNAMSIZ],
     }
+
+    // linux/mount.h
+
+    pub struct mount_attr {
+        pub attr_set: ::__u64,
+        pub attr_clr: ::__u64,
+        pub propagation: ::__u64,
+        pub userns_fd: ::__u64,
+    }
 }
 
 cfg_if! {
@@ -5524,6 +5533,21 @@ pub const SCHED_FLAG_KEEP_POLICY: ::c_int = 0x08;
 pub const SCHED_FLAG_KEEP_PARAMS: ::c_int = 0x10;
 pub const SCHED_FLAG_UTIL_CLAMP_MIN: ::c_int = 0x20;
 pub const SCHED_FLAG_UTIL_CLAMP_MAX: ::c_int = 0x40;
+
+// linux/mount.h
+pub const MOUNT_ATTR_RDONLY: ::__u64 = 0x00000001;
+pub const MOUNT_ATTR_NOSUID: ::__u64 = 0x00000002;
+pub const MOUNT_ATTR_NODEV: ::__u64 = 0x00000004;
+pub const MOUNT_ATTR_NOEXEC: ::__u64 = 0x00000008;
+pub const MOUNT_ATTR__ATIME: ::__u64 = 0x00000070;
+pub const MOUNT_ATTR_RELATIME: ::__u64 = 0x00000000;
+pub const MOUNT_ATTR_NOATIME: ::__u64 = 0x00000010;
+pub const MOUNT_ATTR_STRICTATIME: ::__u64 = 0x00000020;
+pub const MOUNT_ATTR_NODIRATIME: ::__u64 = 0x00000080;
+pub const MOUNT_ATTR_IDMAP: ::__u64 = 0x00100000;
+pub const MOUNT_ATTR_NOSYMFOLLOW: ::__u64 = 0x00200000;
+
+pub const MOUNT_ATTR_SIZE_VER0: ::c_int = 32;
 
 // elf.h
 pub const NT_PRSTATUS: ::c_int = 1;
